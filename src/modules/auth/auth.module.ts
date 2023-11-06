@@ -1,15 +1,21 @@
-import { PrismaService } from 'src/core/services/prisma/prisma.service';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-/*
-https://docs.nestjs.com/modules
-*/
 
 import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
+import { jwtConstants } from './CONSTANTS/jwtConstants';
+import { SharedModule } from '../shared/shared.module';
 
 @Module({
-  imports: [],
+  imports: [
+    SharedModule,
+    JwtModule.register({
+      global: true,
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: '1d' },
+    }),
+  ],
   controllers: [AuthController],
-  providers: [AuthService, PrismaService],
+  providers: [AuthService],
 })
 export class AuthModule {}

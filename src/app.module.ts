@@ -1,10 +1,12 @@
+import { SharedModule } from './modules/shared/shared.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { Module } from '@nestjs/common';
-import { PrismaService } from './core/services/prisma/prisma.service';
+import { PatientModule } from './modules/patient/patient.module';
 
 @Module({
-  imports: [AuthModule],
+  imports: [SharedModule, AuthModule, PatientModule],
   controllers: [],
-  providers: [PrismaService],
+  providers: [],
+  exports: [],
 })
 export class AppModule {}
