@@ -36,6 +36,6 @@ export class PatientService {
   }
 
   async cuestionario(body: any) {
-    return await this.PrismaService.cuestionario.create({ data: body });
+    // return await this.PrismaService.cuestionario.create({ data: body });
   }
 }
