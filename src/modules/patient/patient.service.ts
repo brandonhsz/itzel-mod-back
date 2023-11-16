@@ -11,8 +11,12 @@ export class PatientService {
     return await this.PrismaService.patient.create({ data });
   }
 
-  async findAll() {
-    return await this.PrismaService.patient.findMany();
+  async findAll(doctorId: number) {
+    return await this.PrismaService.patient.findMany({
+      where: {
+        doctorId,
+      },
+    });
   }
 
   async findOne(id: number) {

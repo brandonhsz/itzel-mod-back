@@ -1,26 +1,32 @@
 import {
   IsEmail,
   IsNumber,
+  IsOptional,
   IsString,
   MaxLength,
   MinLength,
 } from 'class-validator';
 
 export class CreatePatientDto {
-  @IsEmail()
-  email: string;
+  @IsNumber()
+  userId: number;
+
+  @IsNumber()
+  doctorId: number;
 
   @IsString()
+  @IsOptional()
   name: string;
 
   @IsNumber()
+  @IsOptional()
   age: number;
 
-  @IsNumber()
-  weight: number;
+  @IsString()
+  @IsOptional()
+  phone: string;
 
   @IsString()
-  @MaxLength(10)
-  @MinLength(10)
-  phone: string;
+  @IsOptional()
+  weight: number;
 }

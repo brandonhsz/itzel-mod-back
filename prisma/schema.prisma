@@ -11,20 +11,20 @@ datasource db {
 }
 
 model User {
-  id              Int               @id @default(autoincrement())
-  email           String            @unique
-  password        String?
-  is_doctor       Boolean
-
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  password  String?
+  is_doctor Boolean
 }
 
 model Patient {
   id              Int               @id @default(autoincrement())
-  email           String            @unique
-  name            String
-  age             Int
-  weight          Float
-  phone           String
+  userId          Int
+  doctorId        Int
+  name            String?         
+  age             Int?            
+  weight          Float?
+  phone           String?
   ClinicalHistory ClinicalHistory[]
 }
 

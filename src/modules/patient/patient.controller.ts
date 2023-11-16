@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 import { PatientService } from './patient.service';
 import { CreatePatientDto } from './dto/create-patient.dto';
@@ -24,9 +25,9 @@ export class PatientController {
   }
 
   @UseGuards(AuthGuard)
-  @Get()
-  findAll() {
-    return this.patientService.findAll();
+  @Get(':doctorId')
+  findAll(@Param('doctorId') doctorId: string) {
+    return this.patientService.findAll(+doctorId);
   }
 
   @UseGuards(AuthGuard)
