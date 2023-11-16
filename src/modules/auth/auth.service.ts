@@ -28,6 +28,9 @@ export class AuthService {
 
     return {
       access_token: this.JwtService.sign(payload),
+      userType: user.is_doctor ? 'doctor' : 'patient',
+      id: user.id,
+      email: user.email,
     };
   }
 }

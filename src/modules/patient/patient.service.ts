@@ -12,6 +12,7 @@ export class PatientService {
   }
 
   async findAll(doctorId: number) {
+    console.log(doctorId);
     return await this.PrismaService.patient.findMany({
       where: {
         doctorId,
@@ -32,5 +33,9 @@ export class PatientService {
 
   async remove(id: number) {
     return await this.PrismaService.patient.delete({ where: { id } });
+  }
+
+  async cuestionario(body: any) {
+    return await this.PrismaService.cuestionario.create({ data: body });
   }
 }

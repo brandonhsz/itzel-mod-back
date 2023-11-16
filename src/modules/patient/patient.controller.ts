@@ -24,8 +24,7 @@ export class PatientController {
     return this.patientService.create(createPatientDto);
   }
 
-  @UseGuards(AuthGuard)
-  @Get(':doctorId')
+  @Get('many/:doctorId')
   findAll(@Param('doctorId') doctorId: string) {
     return this.patientService.findAll(+doctorId);
   }
@@ -46,5 +45,10 @@ export class PatientController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.patientService.remove(+id);
+  }
+
+  @Post('cuestionario')
+  cuestionario(@Body() body: any) {
+    return this.patientService.cuestionario(body);
   }
 }

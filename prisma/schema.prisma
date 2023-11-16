@@ -28,6 +28,16 @@ model Patient {
   ClinicalHistory ClinicalHistory[]
 }
 
+model Cuestionario {
+  id       Int     @id @default(autoincrement())
+  patientId Int    @unique
+  question1 Boolean
+  question2 Boolean
+  question3 Boolean
+  question4 Boolean
+  question5 Boolean
+}
+
 model ClinicalHistory {
   patient     Patient  @relation(fields: [patientId], references: [id])
   id          Int      @id @default(autoincrement())
